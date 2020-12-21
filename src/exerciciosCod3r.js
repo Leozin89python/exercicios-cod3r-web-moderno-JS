@@ -238,10 +238,59 @@ console.log('|                           |')
 console.log('|      volte sempre!  ;)    |')
 console.log('|                           |')
 console.log('=============================')
+//1)
+calculadora = (a,b) =>{
+    console.log()
+    let soma = a + b
+    let sub  = a - b
+    let mut  = a * b
+    let div  = a /b  
+    return {soma, sub,mut,div}
+}
+console.log(calculadora(4,2))
+//6)
+let hp12cCassiu = (c,tx,t) =>   {
+        console.log()
+        let montante = c * Math.pow((1 + tx),t).toFixed(3)
+        let composto = montante
+        return  {composto}
+}
 
+hp12cChina = (c,tx,t) =>  {
+        console.log()
+        let simples = (c * tx * t).toFixed(3)
+        return  {simples}
+}
+console.log(hp12cCassiu(10000,0.05,18))
+console.log(hp12cChina(10000,0.05,18))
+//8)
+console.log()
+this.pontos = []
 
+this.pontos.push('10')
+this.pontos.push('50')
+this.pontos.push('100')
+this.pontos.push('50')
+this.pontos.splice(0,1)
+this.pontos.push('30')
+this.pontos.push('9')
+/*let mapea = this.pontos.map(e   =>{
+    return parseInt(e)
+})*/
+console.log(this.pontos)
 
-
+let game = pontos =>{
+    pontos = this.pontos
+    maior = -999
+    menor = 999
+    mapea = this.pontos.map(e   =>{
+        return parseInt(e)
+    })
+    
+    return 0
+    }
+console.log(game())
+//terminarei depois
 
 
 

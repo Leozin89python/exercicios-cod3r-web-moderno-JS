@@ -1,0 +1,28 @@
+body{
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+#bt,#put,#resp{
+    margin-top: 6em;
+}
+#put{
+    max-height: 1.6em;
+}
+#bt{
+    height: 2em;
+    width: 6em;
+    margin-left: 0.5em;
+    background-color: black;
+
+    transition-property: background-color;
+    transition-duration: 0.3s;
+}
+#bt:hover{
+    background-color: blue;   
+}
+#resp{
+    margin-left: 3.6em;
+}
+
