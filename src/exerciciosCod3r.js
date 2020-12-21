@@ -256,7 +256,7 @@ let hp12cCassiu = (c,tx,t) =>   {
         return  {composto}
 }
 
-hp12cChina = (c,tx,t) =>  {
+let hp12cChina = (c,tx,t) =>  {
         console.log()
         let simples = (c * tx * t).toFixed(3)
         return  {simples}
