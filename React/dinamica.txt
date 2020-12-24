@@ -412,7 +412,7 @@ limpar = () =>  {
 					frontEnd
 				salvando no localStorage
 
-		===============pasta db(banco de dados)=======================
+	=============== components/db.js -db(banco de dados)- =======================
 
 const CLIENTES = '_CLIENTES' /* será a KEY no localStorage(ls)*/
 
@@ -433,7 +433,7 @@ export default class Db {
 }
 
 
-		===============pasta App(principal)==================
+		=============== src/App -App(principal)- ==================
 
 
 import React,{Component} from "react";
