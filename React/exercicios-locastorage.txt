@@ -1,0 +1,129 @@
+
+
+				======== src/app =========
+
+import React, {Component} from "react";
+import DB from './components/db'
+import "./style.css";
+
+export default class App extends Component {
+
+  constructor(){
+    super()
+    this.Banco = new DB()
+  }
+
+  state = {
+      item: '',
+      preco: 0,
+      quantidade: 0,
+      validade:'',
+      descricao:''
+  }
+
+  limpar = () =>{
+    this.setState({
+        item: '',
+        preco: 0,
+        quantidade: 0,
+        validade:'',
+        descricao:''
+    })
+  }
+
+  enviar = (e) =>{
+        let valor = e.target.value
+        let name = e.target.name
+         this.setState({
+        [name]  : valor
+    })
+  }
+ 
+onSubmit = (e) =>{
+  let prod = {
+        item: this.state.item,
+        preco: this.state.preco,
+        quantidade: this.state.quantidade,
+        validade:this.state.validade,
+        descricao:this.state.descricao
+  }
+  this.Banco.salvar(prod)
+}
+
+  render(){
+      return (
+          <div>
+              <form>
+                  <label>item:  *</label>
+                  <input 
+                    placeholder="néctar maratá 200ml"
+                    type="text"
+                    name="item"
+                    value={this.state.item}
+                    onChange={this.enviar}/>
+                  <br/>
+
+                  <label>preço:  *</label>
+                  <input 
+                    placeholder="0"
+                    type="number"
+                    name="preco"
+                    value={this.state.preco}
+                    onChange={this.enviar}/>
+                  <br/>
+
+                  <label>quantidade:  *</label>
+                  <input 
+                    placeholder="0"
+                    type="number"
+                    name="quantidade"
+                    value={this.state.quantidade}
+                    onChange={this.enviar}/>
+                  <br/>
+
+                  <label>validade:  *</label>
+                  <input 
+                    placeholder="02/01/2022"
+                    type="text"
+                    name="validade"
+                    value={this.state.validade}
+                    onChange={this.enviar}/>
+                  <br/>
+
+                  <label>validade:  *</label>
+                  <textarea
+                    placeholder="item OK!"
+                    type="text"
+                    name="descricao"
+                    value={this.state.descricao}
+                    onChange={this.enviar}/>
+                  <br/>
+
+                  <button onClick={this.onSubmit}>enviar</button>
+                  <button onClick={this.limpar}>limpar</button>
+              </form>
+          </div>
+      );
+  }
+
+}
+
+				======= components/db =========
+
+
+const PRODUTOS = '_PRODUTOS'
+
+export default class db {
+
+    salvar = (produto) =>  {
+      let produtos = localStorage.getItem(PRODUTOS )
+      if(!produtos){
+        produtos = []
+      }else{
+        produtos = JSON.parse(produtos)
+      }
+
+      produtos.push(produto)
+      localStorage.setItem(PRODUTOS, JSON.stringify(produtos))
+    }
+}
