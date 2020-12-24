@@ -1,0 +1,89 @@
+import React,{Component} from "react";
+import DB from './components/db'
+import "./style.css";
+
+
+export default class App extends Component {
+  
+  state = {
+      item:'',
+      preco: 0,
+      quantidade:0,
+      validade:'',
+      descricao:''
+  }
+
+limpar = () =>{
+  this.setState({
+        item:'',
+        preco: 0,
+        quantidade:0,
+        validade:'',
+        descricao:''
+  })
+}
+
+
+
+enviar = (e) =>   {
+    let valor = e.target.value
+    let name = e.target.name
+    this.setState({
+      [name]:valor
+    })
+}
+
+onSubmit = (e) =>{
+  console.log(this.state)
+}
+
+  render(){
+      return (
+        <div>
+          <label>item:   *</label>
+          <input
+           type="text"
+           placeholder="Jurandir Souza"
+           name="item"
+           value={this.state.item}
+           onChange={this.enviar}/>
+          <br/>
+           <label>preço:  *</label>
+          <input
+           type="number"
+           placeholder="0"
+           name="preco"
+           value={this.state.preco}
+           onChange={this.enviar}/>
+           <br/>
+           <label>quantidade:  *</label>
+          <input
+           type="number"
+           placeholder="0"
+           name="quantidade"
+           value={this.state.quantidade}
+           onChange={this.enviar}/>
+           <br/>
+           <label>validade:  *</label>
+          <input
+           type="text"
+           placeholder="12/02/2022"
+           name="validade"
+           value={this.state.validade}
+           onChange={this.enviar}/>
+           <br/>
+           <label>descrição:  *</label>
+          <textarea
+           type="text"
+           placeholder="item com validade extendida"
+           name="descricao"
+           value={this.state.descricao}
+           onChange={this.enviar}/>
+           <br/>
+          <button onClick={this.onSubmit}>enviar</button>
+          <button onClick={this.limpar}>limpar</button>
+        </div>
+    );
+  }
+  
+}
