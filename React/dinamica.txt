@@ -1,0 +1,511 @@
+import React,{Component} from "react";
+import "./style.css";
+
+export default class App extends Component {
+ 
+{/* utilização pelo componente App somente */}
+
+
+ state = {
+   nome : 'Leo',
+   idade:12,
+   codigo: '012354ewqrlkdfaj'
+ }
+
+ alteraNome = e =>  {
+   let nome = e.target.value
+   this.setState({
+     nome: nome
+   })
+ }
+ 
+ alteraIdade = e =>  {
+   let idade = e.target.value
+   this.setState({
+     idade: idade
+   })
+ }
+
+  alteraCodigo = e =>  {
+   let codigo = e.target.value
+   this.setState({
+     codigo: codigo
+   })
+  }
+  
+    render(){
+      return (
+        <React.Fragment>
+
+        <h1>Dados do Cliente</h1>
+          <h5>nome</h5>
+          <input type="text"
+            value={this.state.nome}
+            onChange={this.alteraNome}
+           />
+          <h5>idade</h5>
+           <input type="Number"
+            value={this.state.idade}
+            onChange={this.alteraIdade}
+           />
+          <h5>codigo</h5>
+            <input type="text"
+            value={this.state.codigo}
+            onChange={this.alteraCodigo}
+           />
+          
+
+
+           <h3>{this.state.nome}</h3>
+            <h3>{this.state.idade} 
+            anos de idade
+            </h3>
+            <h3>{this.state.codigo}</h3>
+           
+           <h1>Cidade</h1>
+
+            <select>
+                <option>
+                  Bahia
+                </option>
+                <option>
+                  São Paulo
+                </option>
+                 <option>
+                  Rio de Janeiro
+                </option>
+                <option>
+                  Rio grande do Sul
+                </option>
+                 <option>
+                  Amazonas
+                </option>
+                 <option>
+                  Minas Gerais
+                </option>
+            </select>
+        </React.Fragment>
+    );
+  }  
+}
+
+
+
+==========================================================================================
+com saída no input
+
+{/* utilização pelo componente App somente */}
+
+import React,{Component} from "react";
+import "./style.css";
+
+export default class App extends Component {
+ 
+ state = {
+   nome : 'Leo',
+   idade:12,
+   codigo: '012354ewqrlkdfaj'
+ }
+
+ alteraNome = e =>  {
+   let nome = e.target.value
+   this.setState({
+     nome: nome
+   })
+ }
+ 
+ alteraIdade = e =>  {
+   let idade = e.target.value
+   this.setState({
+     idade: idade
+   })
+ }
+
+  alteraCodigo = e =>  {
+   let codigo = e.target.value
+   this.setState({
+     codigo: codigo
+   })
+  }
+  
+    render(){
+      return (
+        <React.Fragment>
+
+        <h1>Dados do Cliente</h1>
+          <h5>nome</h5>
+          <input type="text"
+            value={this.state.nome}
+            onChange={this.alteraNome}
+           />
+          <h5>idade</h5>
+           <input type="Number"
+            value={this.state.idade}
+            onChange={this.alteraIdade}
+           />
+          <h5>codigo</h5>
+            <input type="text"
+            value={this.state.codigo}
+            onChange={this.alteraCodigo}
+           />
+          
+
+
+           <input value={this.state.nome}/>
+           <h3>{this.state.nome}</h3>
+            <h3>{this.state.idade} 
+            anos de idade
+            </h3>
+            <h3>{this.state.codigo}</h3>
+           
+           <h1>Cidade</h1>
+
+            <select>
+                <option>
+                  Bahia
+                </option>
+                <option>
+                  São Paulo
+                </option>
+                 <option>
+                  Rio de Janeiro
+                </option>
+                <option>
+                  Rio grande do Sul
+                </option>
+                 <option>
+                  Amazonas
+                </option>
+                 <option>
+                  Minas Gerais
+                </option>
+                <option>
+                  Gotham
+                </option>
+                <option>
+                  Metropolis
+                </option>
+                <option>
+                  Star City
+                </option>
+                <option>
+                  New York
+                </option>
+            </select>
+        </React.Fragment>
+    );
+  }  
+}
+==========================================================================================
+{/* utilização pelo componente App somente */}
+
+import React, {Component} from "react";
+import "./style.css";
+
+export default class App extends Component {
+  
+  state = {
+  produto:'',
+  preco: 0,
+  quantidade: 0
+  }
+
+  alteraProduto = e => {
+    let item = e.target.value
+    this.setState({
+      produto:item
+    })
+  }
+
+  alteraPreco = e =>  {
+    let item = e.target.value
+    this.setState({
+      preco:item
+    })
+  }
+
+alteraQt = e => {
+  let item = e.target.value
+  this.setState({
+    quantidade:item
+  }) 
+}
+
+  render(){
+    return (
+      <div>
+          <input 
+           placeholder="produto"
+            type="text"
+            value={this.state.produto}
+            onChange={this.alteraProduto}
+          />
+
+           <input 
+             placeholder="preço"
+              type="number"
+              value={this.state.preco}
+              onChange={this. alteraPreco}
+          />
+
+           <input 
+             placeholder="quantidade"
+             type="number"
+             value={this.state.quantidade}
+             onChange={this.alteraQt}
+          />
+          
+          <br/>
+          <br/>
+          <input 
+           value={this.state.produto}
+          />
+
+           <input 
+           value={this.state.preco}
+          />
+
+           <input 
+           value={this.state.quantidade}
+          />
+          
+
+      </div>
+    );
+  }  
+}
+========================================================================================
+				setInterval
+
+diga = setInterval(t,1000)
+
+
+function t(){
+   
+ console.log(0)
+
+}
+
+t()
+
+
+
+
+lembrete = (msg,3000)
+
+function msg(){
+    
+console.log('enviado...')
+
+}
+
+msg()
+
+
+
+conteudo = setInterval(pacote, 5000)
+
+function pacote(){
+ 
+   console.log('dhcp --host')
+  
+   console.log('ip protocol=true')
+ 
+   console.log('..............')
+
+}
+
+pacote()
+
+
+
+
+rede = setInterval(protocolo,4000)
+
+function protocolo(){
+  
+  console.log('======================')
+  
+  console.log('dns established = true')
+  
+  console.log('proxy = 021434sdf5')
+  
+  console.log('tolken: 0122asfdjh&%6')
+ 
+  console.log('req = denied')
+  
+  console.log('udp-protocol ipv4 ')
+    
+  console.log('======================')
+
+}
+
+protocolo()
+
+==========================================================================================
+{/* utilização pelo componente App somente */}
+
+
+import React,{Component} from "react";
+import "./style.css";
+
+export default class App extends Component {
+ 
+
+state={
+  nome:'',
+  email:'',
+  senha:0
+}
+
+dados = (e)  =>  {
+const valor = e.target.value
+const nomeDoCampo = e.target.name
+this.setState({[nomeDoCampo]:valor})
+}
+
+onSubmit = (e) => {
+  console.log(this.state)
+}
+
+limpar = () =>  {
+  this.setState({
+       nome:'',
+       email:'',
+       senha:0
+  })
+}
+  render(){
+      return (
+        <div>
+           <form>
+              <label>nome: *</label>
+              <input type="text"
+              placeholder="Ex:Leonardo"
+              name="nome"
+              value={this.state.nome}
+              onChange={this.dados}/>
+              <br/>
+               <label>email: *</label>
+              <input type="text"
+              placeholder="Ex:leo@eu.com"
+              name="email"
+              value={this.state.email}
+              onChange={this.dados}/>
+               <br/>
+               <label>senha: *</label>  
+              <input type="number" placeholder="0000"
+              name="senha"
+              value={this.state.senha}
+              onChange={this.dados}/>
+              <br/>
+              <br/>
+              <button onClick={this.onSubmit}>enviar</button>
+              <button onClick={this.limpar}>limpar</button>
+           </form>
+        </div>
+    );
+  }
+  
+}
+==========================================================================================
+					frontEnd
+				salvando no localStorage
+
+		===============pasta db(banco de dados)=======================
+
+const CLIENTES = '_CLIENTES' /* será a KEY no localStorage(ls)*/
+
+export default class Db {
+
+
+  salvar = (cliente) => {
+    let clientes = localStorage.getItem(CLIENTES)
+    if(!clientes){
+      clientes = []
+    }else{
+      clientes = JSON.parse(clientes)
+    }
+
+    clientes.push(cliente)
+    localStorage.setItem(CLIENTES,JSON.stringify(clientes)) /* será o VALUE no(ls)*/
+  }
+}
+
+
+		===============pasta App(principal)==================
+
+
+import React,{Component} from "react";
+import DB from './components/db'
+import "./style.css";
+
+export default class App extends Component {
+ 
+
+state={
+  nome:'',
+  email:'',
+  senha:0
+}
+
+constructor(){
+  super()
+  this.clientes = new DB()
+}
+
+dados = (e)  =>  {
+const valor = e.target.value
+const nomeDoCampo = e.target.name
+this.setState({[nomeDoCampo]:valor})
+}
+
+onSubmit = (e) => {
+  const cliente = {
+          nome:this.state.nome,
+          email:this.state.email,
+          senha:this.state.senha
+  }
+  this.clientes.salvar(cliente)
+}
+
+limpar = () =>  {
+  this.setState({
+       nome:'',
+       email:'',
+       senha:0
+  })
+}
+  render(){
+      return (
+        <div>
+           <form>
+              <label>nome: *</label>
+              <input type="text"
+              placeholder="Ex:Leonardo"
+              name="nome"
+              value={this.state.nome}
+              onChange={this.dados}/>
+              <br/>
+               <label>email: *</label>
+              <input type="text"
+              placeholder="Ex:leo@eu.com"
+              name="email"
+              value={this.state.email}
+              onChange={this.dados}/>
+               <br/>
+               <label>senha: *</label>  
+              <input type="number" placeholder="0000"
+              name="senha"
+              value={this.state.senha}
+              onChange={this.dados}/>
+              <br/>
+              <br/>
+              <button onClick={this.onSubmit}>enviar</button>
+              <button onClick={this.limpar}>limpar</button>
+           </form>
+        </div>
+    );
+  }
+  
+}
