@@ -1,0 +1,158 @@
+
+			   ======= src/components/db ========
+
+
+
+const FORMULARIO = '_FORMULARIO'
+
+export default class ecommerce {
+
+  salvar = (formulario) => {
+        let formularios = localStorage.getItem(FORMULARIO)
+        if(!formularios){
+          formularios = []
+        }else{
+          formularios = JSON.parse(formularios)
+        }
+
+        formularios.push(formulario)
+        localStorage.setItem(FORMULARIO, JSON.stringify(formularios))
+  }
+}
+
+
+				======= src/App ========
+
+import React, {Component} from "react";
+import DB from './components/db'
+import "./style.css";
+
+export default class App extends Component {
+    constructor(){
+      super()
+      this.Banco = new DB()
+    }
+     
+    state = {
+            nome: '',
+            cpf:'',
+            cep:'',
+            produto:'',
+            data:'',
+            pagamento:[]
+    }
+
+    limpar = () =>  {
+      this.setState({
+            nome: '',
+            cpf:'',
+            cep:'',
+            produto:'',
+            data:'',
+            pagamento:[]
+      })
+    }
+
+    enviar = (e) =>  {
+      let valor = e.target.value
+      let name  = e.target.name
+      this.setState({
+        [name] : valor
+      }) 
+    }
+
+    onSubmit = () =>  {
+      let formu = {
+            nome: this.state.nome,
+            cpf:this.state.cpf,
+            cep:this.state.cep,
+            produto:this.state.produto,
+            data:this.state.data,
+            pagamento:this.state.pagamento
+      }
+      this.Banco.salvar(formu)
+    }
+
+      render(){
+          return(
+                <React.Fragment>
+                      <h1>cadastro</h1>
+                      <form>
+                          <label>nome: *</label>
+                          <input
+                              type="text"
+                              placeholder="Felix Lucena"
+                              name="nome"
+                              value={this.state.nome}
+                              onChange={this.enviar}
+                           />
+                          <br/>
+
+                          <label>cpf: *</label>
+                          <input
+                              type="text"
+                              placeholder="999.999-99"
+                              name="cpf"
+                              value={this.state.cpf}
+                              onChange={this.enviar}
+                           />
+                          <br/>
+
+                          
+                          <label>cep: *</label>
+                          <input
+                              type="text"
+                              placeholder="99.999.999"
+                              name="cep"
+                              value={this.state.cep}
+                              onChange={this.enviar}
+                           />
+                          <br/>
+
+                          <label>produto: *</label>
+                          <input
+                              type="text"
+                              placeholder="TV LED - LG - '40'"
+                              name="produto"
+                              value={this.state.produto}
+                              onChange={this.enviar}
+                           />
+                          <br/>
+
+                          <label> data: *</label>
+                          <input
+                              type="text"
+                              placeholder="01/02/2002"
+                              name="data"
+                              value={this.state.data}
+                              onChange={this.enviar}
+                           />
+                          <br/>
+
+                          <select 
+                          name="pagamento"
+                          value={this.state.pagamento} 
+                          onChange={this.enviar}>
+                              <option>
+                                  cartão
+                              </option>
+
+                               <option>
+                                  cheque
+                              </option>
+
+                               <option>
+                                  boleto
+                              </option>
+                          </select>
+
+                          <button onClick={this.onSubmit}>enviar</button> 
+                          <button onClick={this.limpar}>limpar</button>
+                      </form>
+                </React.Fragment>            
+          )
+      }
+
+}
+
+ 
