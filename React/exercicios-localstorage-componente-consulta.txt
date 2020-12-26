@@ -1,0 +1,214 @@
+
+			   ======  src/componentes/db ======
+
+
+
+const CLIENTE = '_CLIENTE'
+
+
+export default class DB {
+
+    recupera = ( cliente ) =>  {
+        //this.validar()
+        let clientes = localStorage.getItem(CLIENTE)
+        if(!clientes){
+          clientes = []
+        }else{
+          clientes = JSON.parse(clientes)
+        }
+
+        clientes.push(cliente)
+        localStorage.setItem( CLIENTE, JSON.stringify(clientes)) 
+  }
+}
+
+
+
+
+
+			======  src/componentes/consulta ======
+
+
+
+
+import React ,{Component}from 'react'
+
+export default class consulta extends Component{
+
+    state = {
+      clientes:[]
+    }
+
+    render(){
+        return(
+          <React.Fragment>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>nome</th>
+                            <th>telefone</th>
+                            <th>email</th>
+                            <th>cep</th>
+                            <th>sexo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {
+
+                        this.state.clientes.map(  cliente =>{
+                          return(
+
+                          <tr>
+                            <th>{cliente.nome}</th>
+                            <th>{cliente.telefone}</th>
+                            <th>{cliente.email}</th>
+                            <th>{cliente.cep}</th>
+                            <th>{cliente.sexo}</th>
+                            <th></th>
+                        </tr>
+                          
+                          )})
+
+                    }
+                  </tbody>
+                </table>
+          </React.Fragment>
+        )
+    }
+}
+
+
+
+
+				======  src/App ======
+
+
+
+import React, { Component } from "react";
+import DB from "./components/db";
+import "./style.css";
+import Tabela from './components/consulta';
+
+export default class App extends Component {
+  constructor() {
+    super();
+    this.Banco = new DB();
+  }
+
+  state = {
+    nome: "",
+    telefone: "",
+    email: "",
+    cep: "",
+    sexo: [],
+    sucesso: false,
+    consulta:[]
+  };
+
+  limpar = () => {
+    this.setState({
+      nome: "",
+      telefone: "",
+      email: "",
+      cep: "",
+      sexo: []
+    });
+    this.setState({
+      sucesso: false
+    });
+  };
+
+  enviar = e => {
+    let valor = e.target.value;
+    let name = e.target.name;
+    this.setState({
+      [name]: valor
+    });
+  };
+
+  onSubmit = () => {
+    let clientes = {
+      nome: this.state.nome,
+      telefone: this.state.telefone,
+      email: this.state.email,
+      cep: this.state.cep,
+      sexo: this.state.sexo
+    };
+    this.Banco.recupera(clientes);
+    this.setState({
+      sucesso: true
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <form>
+          <label>nome:</label>
+          <input
+            type="text"
+            placeholder="Erica Souza"
+            name="nome"
+            value={this.state.nome}
+            onChange={this.enviar}
+          />
+          <br />
+
+          <label>telefone:</label>
+          <input
+            type="text"
+            placeholder="(99)99999-9999"
+            name="telefone"
+            value={this.state.telefone}
+            onChange={this.enviar}
+          />
+          <br />
+
+          <label>email:</label>
+          <input
+            type="text"
+            placeholder="eu@gmail.com"
+            name="email"
+            value={this.state.email}
+            onChange={this.enviar}
+          />
+          <br />
+
+          <label>cep:</label>
+          <input
+            type="text"
+            placeholder="41.500-550"
+            name="cep"
+            value={this.state.cep}
+            onChange={this.enviar}
+          />
+          <br />
+          {/** */}
+          <h4>sexo</h4>
+          <select name="sexo" value={this.state.sexo} onChange={this.enviar}>
+            <option>M</option>
+
+            <option>F</option>
+          </select>
+
+          <button onClick={this.onSubmit}>enviar</button>
+          <button onClick={this.limpar}> limpar</button>
+
+          {this.state.sucesso ? (
+            <h5>formulário enviado com sucesso!</h5>
+          ) : (
+            <></>
+          )}
+
+  
+        </form>
+
+        <br />
+        <br />
+
+        <Tabela />
+      </div>
+    );
+  }
+}

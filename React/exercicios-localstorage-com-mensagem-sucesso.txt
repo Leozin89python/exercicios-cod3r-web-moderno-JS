@@ -1,0 +1,164 @@
+
+
+ 			======= src/components/db ========
+
+
+
+
+export default class DB {
+
+
+
+    recupera = ( cliente ) =>  {
+        let clientes = localStorage.getItem(CLIENTE)
+        if(!clientes){
+          clientes = []
+        }else{
+          clientes = JSON.parse(clientes)
+        }
+
+        clientes.push(cliente)
+        localStorage.setItem( CLIENTE, JSON.stringify(clientes)) 
+    }
+
+
+}
+
+
+
+				======= src/App ========
+
+
+
+import React, {Component} from "react";
+import DB from './components/db'
+import "./style.css";
+
+export default class App extends Component {
+
+      constructor(){
+        super()
+        this.Banco = new DB()
+      }
+
+      state = {
+
+        nome:'',
+        telefone:'',
+        email:'',
+        cep:'',
+        sexo:[],
+        sucesso: false
+      }
+
+    limpar = () =>  {
+      this.setState({
+        nome:'',
+        telefone:'',
+        email:'',
+        cep:'',
+        sexo:[]
+      })
+      this.setState({
+          sucesso:false
+      })
+    }
+
+    enviar = (e) =>{
+      let valor = e.target.value
+      let name  = e.target.name
+      this.setState({
+        [name]:valor
+      })
+    }
+
+    onSubmit = () =>  {
+    let clientes =      
+        {
+              nome:this.state.nome,
+              telefone:this.state.telefone,
+              email:this.state.email,
+              cep:this.state.cep,
+              sexo:this.state.sexo
+          }
+     this.Banco.recupera(clientes)   
+     this.setState({
+             sucesso:true
+     })
+    }
+
+      render(){
+          return (
+                <div>
+                   
+                    <form>
+
+                        <label>nome:</label>
+                        <input
+                          type="text"
+                          placeholder="Erica Souza"
+                          name="nome"
+                          value={this.state.nome}
+                          onChange={this.enviar}/>
+                        <br/>
+
+                        <label>telefone:</label>
+                        <input
+                          type="text"
+                          placeholder="(99)99999-9999"
+                          name="telefone"
+                          value={this.state.telefone}
+                          onChange={this.enviar}/>
+                        <br/>
+
+                        <label>email:</label>
+                        <input
+                          type="text"
+                          placeholder="eu@gmail.com"
+                          name="email"
+                          value={this.state.email}
+                          onChange={this.enviar}/>
+                        <br/>
+
+                        <label>cep:</label>
+                        <input
+                          type="text"
+                          placeholder="41.500-550"
+                          name="cep"
+                          value={this.state.cep}
+                          onChange={this.enviar}/>
+                        <br/>
+                          {/** */}
+                        <h4>sexo</h4>
+                        <select 
+                          name="sexo"
+                          value={this.state.sexo}
+                          onChange={this.enviar}
+                           >
+                          <option>
+                              M
+                          </option>
+
+                          <option>
+                              F
+                          </option>
+                        </select>
+                          
+                        <button onClick={this.onSubmit}>enviar</button>
+                        <button onClick={this.limpar}>  limpar</button>
+
+                        {
+                            (this.state.sucesso) ?
+                            <h5>formulário enviado com sucesso!</h5>
+                            :
+                            <></>
+
+                        }  
+                        
+
+                    </form>
+
+                </div>
+            );
+    }
+}
