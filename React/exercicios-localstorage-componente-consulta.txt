@@ -42,7 +42,7 @@ export default class consulta extends Component{
     render(){
         return(
           <React.Fragment>
-                <table>
+                <table border="1px">
                     <thead>
                         <tr>
                             <th>nome</th>
@@ -69,7 +69,6 @@ export default class consulta extends Component{
                         </tr>
                           
                           )})
-
                     }
                   </tbody>
                 </table>
@@ -195,11 +194,15 @@ export default class App extends Component {
           <button onClick={this.onSubmit}>enviar</button>
           <button onClick={this.limpar}> limpar</button>
 
-          {this.state.sucesso ? (
-            <h5>formulário enviado com sucesso!</h5>
-          ) : (
-            <></>
-          )}
+          {
+		
+		(this.state.sucesso) ? (
+        	<h5>formulário enviado com sucesso!</h5>
+          	) : (
+            	<></>
+          	)
+		
+	  }
 
   
         </form>
