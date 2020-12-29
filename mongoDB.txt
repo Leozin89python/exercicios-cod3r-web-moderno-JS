@@ -1,0 +1,6 @@
+db.estados.insert('nome':'São Paulo','sigla':'Sp','região':'Sudeste',
+'cidades':[{'nome':'Campinas','area':'797.7','prefeito':'Jonas 	    Donizatte','população':'1081000'},
+	   {'nome':'Guarulhos','população':'1325000'},
+	   {'nome':'Sorocaba','distanciaCapital':'87','população':'644919'}])
+
+// (desafio aula 503) só não inseri o   objectId()
