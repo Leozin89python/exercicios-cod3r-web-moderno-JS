@@ -1,0 +1,19 @@
+{
+
+
+    "Pessoal":[{
+        "Nome":"érica souza",
+        "idade":"31",
+        "sexo":"feminino"
+    },{
+        "Nome":"Fernanda Sena",
+        "idade":"27",
+        "sexo":"feminino"
+    },{
+        "Nome":"Ana Laura",
+        "idade":"19",
+        "sexo":"feminino"
+    }]
+
+
+}

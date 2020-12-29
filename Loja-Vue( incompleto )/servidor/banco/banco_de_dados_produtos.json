@@ -1,0 +1,19 @@
+{
+
+
+    "banco":[{
+        "item":"café",
+        "preço":2.25,
+        "quantidade":50
+    },{
+        "item":"pão limiar",
+        "preço":4.57,
+        "quantidade":15
+    },{
+        "item":"arroz",
+        "preço":7.85,
+        "quantidade":97
+    }]
+
+
+}

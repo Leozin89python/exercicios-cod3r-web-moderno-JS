@@ -1,0 +1,35 @@
+github:
+
+leozin069@gmail.com
+Leozin89python
+DKmurdock987
+
+
+primeiro commit(criando repositório)
+
+//se não estiver logado
+git config --list
+git config --global user.name "Nelio Alves"
+git config --global user.email "acenelio@gmail.com"
+//se não estiver logado
+
+git init
+git remote add origin https://github.com/
+git pull origin master
+git status 
+git add . 
+git commit -m "Projeto criado" 
+git push -u origin master
+
+a partir do segundo commit(atualizando repositório)
+
+git status
+git add .
+git commit -m "projeto alterado"
+git push
+
+remover para reincerir repositório:
+
+git remote -v 
+git remote remove origin 
+git remote add origin git@github.com:user/repo.git  

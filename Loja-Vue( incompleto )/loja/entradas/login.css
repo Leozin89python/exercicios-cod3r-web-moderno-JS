@@ -1,0 +1,44 @@
+html{
+    height: 100%;
+    width: 100%;
+}
+body{
+    height: 100%;
+    width: 100%;
+    background: rgb(2,0,36);
+    background: -moz-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,24,0.853448275862069) 91%, rgba(0,212,255,1) 100%);
+    background: -webkit-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,24,0.853448275862069) 91%, rgba(0,212,255,1) 100%);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(24,24,24,0.853448275862069) 91%, rgba(0,212,255,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1);}
+#entradas{
+  float:right;
+  margin-right:60px ;
+  margin-top: 200px;
+  height: 300px;
+  width: 200px;
+  display: flexbox;
+  border: solid red 2px;
+  background: red;
+  overflow: hidden;
+}
+#lbl,#ipt,#btn{
+    padding: 5px;
+    margin-top: 1px;
+    margin-left: 6px;
+}
+#btn{
+    margin-top: 15px;
+    width:183px;
+  
+}
+#btn:hover{
+    color:#007FFF;
+} 
+#ft{
+    margin-top: 75px;
+    margin-left: 50px;
+    font-size: 35px;
+    color: goldenrod;
+}
+
+

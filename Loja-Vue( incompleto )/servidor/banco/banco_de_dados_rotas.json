@@ -1,0 +1,19 @@
+{
+
+
+    "endereços":[{
+        "Rua":"Avenida Aracy",
+        "cidade":"Salvador",
+        "Uf":"BA"
+    },{
+        "Rua":"Pedro cachoeira",
+        "cidade":"Salvador",
+        "Uf":"BA"
+    },{
+        "Rua":"Aliomar Baleeiro",
+        "cidade":"Salvador",
+        "Uf":"BA"
+    }]
+
+
+}
