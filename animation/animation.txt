@@ -1,0 +1,107 @@
+<!DOCTYPE HTML>
+<html lang="ptbr">
+<meta charset="UTF-8">
+   <head>
+     <title>animation&copy;</title>
+     <style>
+     	body{
+	background-color:whitesmoke;
+	}
+	#conteiner{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+	}
+	#box{
+	margin:5%;
+	height:3em;
+	width:4em;
+	background:red;
+	
+	transition-property:background-color, border-radius;
+	transition-duration:2s, 1.5s;
+	transition-delay:2s;
+	}
+	#box:hover{
+	background-color:gold;
+	border-radius:50%;
+	}
+	#box-2{
+	margin:5%;
+	height:3em;
+	width:4em;
+	background:gold;
+	
+	transition-property:background-color, border-radius;
+	transition-duration:2s, 1.5s;
+	transition-delay:2s;
+	}
+	#box-2:hover{
+	background-color:red;
+	border-radius:50%;
+	}
+	#box-3{
+	margin-left:5em;
+	height:3em;
+	width:4em;
+	background:blue;
+	
+	transition-property:background-color, border-radius;
+	transition-duration:5s, 1.5s;
+	//transition-delay:2s;                      a estas també abaixo:
+	transiction-time-function:ease-in; /*ease-out,ease-in-out,cubic-bezier(n,x,y,z)*/
+	}
+	#box-3:hover{
+	background-color:green;
+	border-radius:50%;
+	}
+	#box-4{
+	animation: anime 3s;
+	margin-left:5em;
+	height:3em;
+	width:4em;
+	background:linear-gradient(132deg, red 19%, gold 81%);
+	}
+	@keyframes anime{
+		from{
+			transform: translateX(calc( 0 ));
+		}
+		
+		50%{
+			transform:translate(300px, -30px)
+		}
+		to{
+			transform: translateX(calc(200px + 525px));
+		}
+	}
+	#box-5{
+	animation: anime 3s;
+	margin-left:5em;
+	height:3em;
+	width:4em;
+	background:linear-gradient(132deg, red 23%, gold 77%);
+	}
+	@keyframes anime{
+		from{
+			transform: translateX(calc( 0, 0 ));
+		}
+		
+		50%{
+			transform:translate(300px, -30px)
+		}
+		to{
+			transform: translateX(calc(200px + 525px), 0);
+		}
+	}
+   </style>
+  </head>
+   <body>
+     <div id="conteiner">	
+      <div id="box"/>
+      <div id="box-2"/>
+      <div id="box-3"/>    
+      <div id="box-4"/>
+      <div id="box-5"/>
+   </div>
+ </body>
+</html>

@@ -1,0 +1,58 @@
+body{
+    animation: grade 45s ease infinite;
+    background: linear-gradient(97deg, gold 25%, yellow 25%, red 50%) no-repeat;
+    background-size: 16000% 16000%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 7vh;
+}
+.header{
+    background: linear-gradient(97deg, gold 45%, yellow 55%) no-repeat;
+    height: 27vh;
+    width: 103vh;
+    text-align: center;
+}
+#title{
+    color: white;
+    padding: 8vh;
+    font-size: 9vh;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-shadow: 1px 2px 2px black;
+}
+.center{
+    margin-top: 15vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.card{
+    border: black 0px solid;
+    border-radius: 12px;
+    height: 17vh;
+    width: 27vh;
+    padding: 3vh;
+    text-align: center;
+    box-shadow: 7px 7px 7px;
+    background:  linear-gradient(97deg, gold 45%, yellow 55%) no-repeat;
+
+    transition-property:color,box-shadow,background;
+    transition-duration:3s;
+   
+}
+.card:hover{
+    color:white;
+    box-shadow: 1px 1px 1px;
+    background:  linear-gradient(97deg, darkred 45%, red 55%) no-repeat; 
+}
+@keyframes grade{
+    0%{
+        background-position: 0  50%;
+    }
+    55%{
+        background-position: 100%  50%;
+    }
+    100%{
+        background-position: 0  50%;
+    }
+}

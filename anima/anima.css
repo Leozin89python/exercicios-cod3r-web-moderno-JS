@@ -1,0 +1,31 @@
+body{
+ 
+    animation: grade 25s ease infinite;
+    background: linear-gradient(97deg, red 20%, gold 50%,blue 15%,pink 15%) no-repeat;
+    background-size: 650% 650%;
+ 
+}
+.title{
+    color: white;
+    font-size: 7vh;
+    font-family: fantasy;
+    display: flex;
+    justify-content: center;
+    margin-top: 15vh;
+}
+#st{
+    color:goldenrod;
+}
+
+@keyframes grade{
+
+    0%{
+        background-position: 0 50%;
+    }
+    50%{
+        background-position: 100% 50%;
+    }
+    100%{
+        background-position: 0 50%;
+    }
+}

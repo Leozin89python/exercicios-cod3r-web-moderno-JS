@@ -1,0 +1,44 @@
+
+body{
+ background-image: url("../assets/New-York-HD-7.jpg");
+ background-repeat: no-repeat;
+}
+#conteiner{
+  background-color: black;
+  height: 5em;
+  width: 102.4%;
+  margin-left: -1em;
+  margin-top: -1em;  
+}
+#linha{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 3%;
+    list-style: none;   
+}
+#ico{
+    height:10px ;
+    width: 25px;
+}
+#linhaprincipal{
+    position: relative;
+}
+.sublinha1,.sublinha2,.sublinha3{
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    background-color: black;
+    background-size: 100%;
+}
+a{
+    color: white;
+    text-decoration: none;
+}
+a:hover{
+    background-color: rgba(255, 255, 255,.3);
+}
+#sublinha{
+    list-style: none;
+    text-decoration: none;
+}
