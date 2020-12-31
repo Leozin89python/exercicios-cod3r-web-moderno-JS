@@ -1,0 +1,46 @@
+só na versão 1.8			
+tenho que baixar esta versão pois há erros
+			
+			dpendências spring-jpa
+
+
+
+//usada no curso
+<dependency>
+	<groupId>org.sprinframework.boot</groupId>
+	<artifactId>spring-boot-starter-data-jpa</artifactId>
+</dependency>
+
+
+
+
+
+//não usada no curso
+<dependency>
+	<groupId>org.hsqldb</groupId>
+	<artifactId>hsqldb</artifactId>
+	<scope>runtime</scope>
+</dependency>
+
+
+
+
+
+//usada no curso
+<dependency>
+	<groupId>org.postgresql</groupId>
+	<artifactId>postgresql</artifactId>
+</dependency>
+ 
+
+
+
+
+
+
+configuração do application.properties em minha máquina:
+
+spring.datasource.url=jdbc:postgresql://localhost:5432/minhasfinacas
+spring.datasource.username=postgres
+spring.datasource.password=123456
+spring.datasource.driver-class-name=org.postgresql.Driver
