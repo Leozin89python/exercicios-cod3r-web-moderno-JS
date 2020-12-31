@@ -1,0 +1,253 @@
+		
+				=== src/components/db ===
+
+const CLIENTS = '_CLIENTS'
+
+export default class Clients {
+
+    onTable = () =>{
+      const clients = localStorage.getItem(CLIENTS)
+      return JSON.parse(clients)
+    }
+
+    recovery = (client) =>  {
+      let clients = localStorage.getItem(CLIENTS)
+      if(!clients){
+          clients = []
+      }else{
+        clients = JSON.parse(clients)
+      }
+
+      clients.push(client)
+      localStorage.setItem(CLIENTS,JSON.stringify(clients))
+  }
+}
+
+
+
+				=== src/components/consulta ===
+
+
+import React ,{Component}from 'react'
+import DB from './db'
+
+export default class consulta extends Component{
+    constructor(){
+      super()
+      this.Data = new DB()
+    }
+
+    state = {
+      clients:[]
+    }
+
+  componentDidMount = () =>{
+   const el =  this.Data.onTable() 
+   this.setState({
+       clients:el
+    })
+  }
+
+    render(){
+        return(
+          <React.Fragment>
+                <table border="2px">
+                    <thead>
+                        <tr>
+                            <th>Name</th> 
+                            <th>Buy</th>
+                            <th>Deliver</th> 
+                            <th>Quantity</th>  
+                            <th>Product</th> 
+                            <th>Price</th>
+                            <th>Adress</th>  
+                            <th>Sex</th>  
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                          this.state.clients.map((element,index) =>{
+                              return(
+                         <tr key={index}>
+                              <th>{element.name}</th> 
+                              <th>{element.buy}</th>
+                              <th>{element.deliver}</th> 
+                              <th>{element.quantity}</th>  
+                              <th>{element.product}</th> 
+                              <th>{element.price}</th>
+                              <th>{element.adress}</th>  
+                              <th>{element.sex}</th>  
+                        </tr>
+                              )})
+                        }
+                    </tbody>
+                </table>
+          </React.Fragment>
+    )
+  }
+}
+
+
+
+
+					=== src/App ===
+
+
+import React, { Component } from "react";
+import DB from "./components/db";
+import "./style.css";
+import Tabela from "./components/consulta";
+
+export default class App extends Component {
+  constructor() {
+    super();
+    this.Data = new DB();
+  }
+
+  state = {
+    name: "",
+    buy: "", // Date of buying 'String'
+    deliver: "",
+    quantity: "", // Date of buying 'String'
+    product: "",
+    price: "", // unity
+    adress: "",
+    sex: []
+  };
+
+  clear = () => {
+    this.setState({
+      name: "",
+      buy: "",
+      deliver: "",
+      quantity: "",
+      product: "",
+      price: "",
+      adress: "",
+      sex: []
+    });
+  };
+
+  send = e => {
+    let val = e.target.value;
+    let name = e.target.name;
+    this.setState({
+      [name]: val
+    });
+  };
+
+  onSubmit = () => {
+    let client = {
+      name: this.state.name,
+      buy: this.state.buy,
+      deliver: this.state.deliver,
+      quantity: this.state.quantity,
+      product: this.state.product,
+      price: this.state.price,
+      adress: this.state.adress,
+      sex: this.state.sex
+    };
+    this.Data.recovery(client);
+  };
+
+  render() {
+    return (
+      <div>
+        <form>
+          <h1>Logistics Products Expedition</h1>
+          <h3>client</h3>
+          <br />
+          <label>Name:*</label>
+          <input
+            name="name"
+            type="text"
+            placeholder="Leonard Mendes"
+            value={this.state.name}
+            onChange={this.send}
+          />
+          <br />
+
+          <label>Buy:*</label>
+          <input
+            name="buy"
+            type="text"
+            placeholder="12/30/2020"
+            value={this.state.buy}
+            onChange={this.send}
+          />
+          <br />
+
+          <label>Deliver:*</label>
+          <input
+            name="deliver"
+            type="text"
+            placeholder="01/05/2021"
+            value={this.state.deliver}
+            onChange={this.send}
+          />
+          <br />
+
+          <label>Quantity:*</label>
+          <input
+            name="quantity"
+            type="text"
+            placeholder="10 unities"
+            value={this.state.quantity}
+            onChange={this.send}
+          />
+          <br />
+
+          <label>Product:*</label>
+          <input
+            name="product"
+            type="text"
+            placeholder="Range Rover Evoque"
+            value={this.state.product}
+            onChange={this.send}
+          />
+          <br />
+
+          <label>Price:*</label>
+          <input
+            name="price"
+            type="text"
+            placeholder="123.245,00 $"
+            value={this.state.price}
+            onChange={this.send}
+          />
+          <br />
+
+          <label>Adress:*</label>
+          <input
+            name="adress"
+            type="text"
+            placeholder="5° avenue,Wall Street, NY"
+            value={this.state.adress}
+            onChange={this.send}
+          />
+          <br />
+          <br />
+          <br />
+          <br />
+
+          <label>Sex:*</label>
+          <br />
+          <select name="sex" value={this.state.sex} onChange={this.send}>
+            <option>Female</option>
+            <option>Male</option>
+          </select>
+          <button onClick={this.onSubmit}>send</button>
+          <button onClick={this.clear}>clear</button>
+        </form>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <Tabela />
+      </div>
+    );
+  }
+}
