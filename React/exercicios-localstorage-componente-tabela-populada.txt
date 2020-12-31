@@ -1,0 +1,221 @@
+
+				==== src/components/db ====
+
+
+const PROGRAMMMERS = '_PROGRAMMMERS'
+
+export default class Team {
+	
+     
+      getTeam = () => {
+        const programmers = localStorage.getItem(PROGRAMMMERS)
+        return JSON.parse(programmers)
+      }
+
+      team = (programmer) =>{
+        let programmers = localStorage.getItem(PROGRAMMMERS)
+        if(!programmers) {
+          programmers = []
+        } else{
+          programmers = JSON.parse(programmers)
+        }
+        programmers.push(programmer)
+        localStorage.setItem(PROGRAMMMERS,JSON.stringify(programmers))
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+			==== src/components/consulta ====
+
+
+
+import React ,{Component}from 'react'
+import DB from './db'
+
+export default class consulta extends Component{
+  constructor(){
+    super()
+    this.Bank = new DB
+  }
+
+  state = {
+    programmers:[]
+  }
+
+  componentDidMount = () => {
+      const programmers = this.Bank.getTeam()
+      this.setState({
+        programmers
+      })
+  }
+
+    render(){
+        return(
+          <React.Fragment>
+                <table border="3px" >
+                    <thead>
+                        <tr>
+                            <th>Enterprise</th>
+                            <th>Name</th>
+                            <th>Activity</th>
+                            <th>Language Programming</th>
+                            <th>Sex</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {      
+                            this.state.programmers.map( (element,index) =>  {
+
+                                    return(
+                                        <tr key={index}>
+                                            <th>{element.enterprise}</th>
+                                            <th>{element.name}</th>
+                                            <th>{element.activity}</th>
+                                            <th>{element.language_programming}</th>
+                                            <th>{element.sex}</th>
+                                        </tr>
+                                    )})
+                        }
+                    </tbody>
+                </table>
+          </React.Fragment>
+    )
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+				      ==== src/App ====
+
+
+
+import React, { Component } from "react";
+import DB from "./components/db";
+import "./style.css";
+import Tabela from './components/consulta';
+
+export default class App extends Component {
+  constructor(){
+    super()
+    this.Bank = new DB()
+  }
+
+  state = {
+    enterprise:'',
+    name:'',
+    activity:'',
+    language_programming:'',
+    sex: []
+  }
+
+clear = () => {
+  this.setState({
+    enterprise:'',
+    name:'',
+    activity:'',
+    language_programming:'',
+    sex: []
+  })
+}
+
+send = (event) =>{
+    let val = event.target.value
+    let name = event.target.name
+    this.setState({
+      [name]:val
+    })
+}
+
+onSubmit = () =>  {
+  let team = {
+    enterprise:this.state.enterprise,
+    name:this.state.name,
+    activity:this.state.activity,
+    language_programming:this.state.language_programming,
+    sex:this.state.sex
+  }
+  this.Bank.team(team)
+}
+
+  render() {
+    return (
+      <div>
+        <h1>Welcome to developer system&copy;</h1>
+          <form>
+              <label>Enterprise: *</label>
+              <input 
+                  name="enterprise"
+                  type="text"
+                  placeholder="Microsoft Corporation"
+                  value={this.state.enterprise}
+                  onChange={this.send}/>
+               <br/>
+
+              <label>Name: *</label>
+              <input 
+                  name="name"
+                  type="text"
+                  placeholder="Steve Wozniak"
+                  value={this.state.name}
+                  onChange={this.send}/> 
+               <br/>   
+
+              <label>Activity: *</label>
+              <input 
+                  name="activity"
+                  type="text"
+                  placeholder="Ux Developer"
+                  value={this.state.activity}
+                  onChange={this.send}/> 
+               <br/>   
+
+              <label>Language Programming: *</label>
+              <input 
+                  name="language_programming"
+                  type="text"
+                  placeholder="Java"
+                  value={this.state.language_programming}
+                  onChange={this.send}/> 
+               <br/>   
+               <br/>
+               <br/>
+
+                <select
+                    name="sex"
+                    value={this.state.sex}
+                    onChange={this.send}>
+                    <option>Female</option>
+                    <option>Male</option>
+                </select>
+
+                <button onClick={this.onSubmit}>send</button>
+                <button onClick={this.clear}>clear</button>
+          </form>
+          <br/>   
+          <br/>
+          <br/>
+          <Tabela/>
+
+      </div>
+    );
+  }
+}
+
