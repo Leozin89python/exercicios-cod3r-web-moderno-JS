@@ -1,0 +1,50 @@
+this.courses = [{
+    name:'design',price:'12.65 $',categories:'t.i'
+},{
+     name:'java',price:'3.65 $',categories:'t.i'
+},{
+     name:'learn-to-do-milkshake',price:'13.45 $',categories:'food'
+},{
+    name:'learn-to-do-pizza',price:'9.64 $',categories:'food'
+},{
+     name:'Ecma6+',price:'12.64 $',categories:'t.i'
+},{
+     name:'learn-english',price:'21.07 $',categories:'language'
+},{
+    name:'learn-frenchese',price:'51.13 $',categories:'language'
+},{
+      name:'life-guard',price:'151.33 $',categories:'health-care'
+},{
+      name:'day-a-day-in-busisness',price:'91.77 $',categories:'busisness'
+},{
+    name:'pentatonic-scale',price:'77.77 $',categories:'music'
+}]
+
+//call like a variable
+let searchTi = this.courses.map(   e   => e.categories == 't.i' ? e : '')
+//call like a  function
+category = () =>    {
+   const search = this.courses.map( e   => e.categories == 't.i' ? e : '' )
+   return search
+}
+
+let searchFood = this.courses.map( e => e.categories == 'food' ? e : '')
+
+searchIdiom = () =>     {
+     searchLang = this.courses.map( e => e.categories == 'language' ? e : '')
+     return searchLang
+}
+
+searcHealth = () => this.courses.map(    e => e.categories == 'health-care' ? e : '')
+
+searchBusisness = this.courses.map( e=> e.categories == 'busisness' ? e : '')
+
+searchMusic = () => this.courses.map( e=> e.categories == 'music' ? e : '')
+
+//console.log(searchTi)
+//console.log(category())
+console.log(searchFood)                 //open anywhere these search elements to do a look up
+//console.log(searchIdiom())
+//console.log(searcHealth())
+//console.log(searchBusisness)
+//console.log(searchMusic())
