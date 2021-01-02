@@ -1,4 +1,4 @@
-﻿CREATE DATABASE supply;
+CREATE DATABASE supply;
 USE supply;
 DROP DATABASE supply;
 
@@ -11,7 +11,7 @@ CREATE TABLE route(
 	idroute INT PRIMARY KEY AUTO_INCREMENT,
 	country VARCHAR(10)NOT NULL,
 	estate VARCHAR(30)NOT NULL,
-	city VARCHAR(30)NOT NULL
+	city VARCHAR(30)NOT NULL,
 	idcli INT,
 	FOREIGN KEY(idcli) REFERENCES client(idclient)
 );
