@@ -1,0 +1,12 @@
+o arquivo db.properties é o arquivo de comunicação entre o
+eclipse eo mySql workbench.
+é necessário o conhecimento do banco
+das conexões para preencher e inserir o arquivo no programa
+
+user=root      ---   o usuário da sessão ---
+
+password=123456   ---- senha da sessão  ---
+
+dburl=jdbc:mysql://localhost:3306/course       --- o caminho e a barra final /( course ) refere-se ao database em uso  ---
+
+useSSL=false   --- caso esteja ou não habilitado o serviço ---
