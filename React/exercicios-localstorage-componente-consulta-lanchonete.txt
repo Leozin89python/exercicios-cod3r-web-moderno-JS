@@ -42,7 +42,7 @@ export default class consulta extends Component{
         }
 
         componentDidMount = () =>{
-          const varejo = this.Banco.naTabela
+          const varejo = this.Banco.naTabela()
           this.setState({
                 varejo
           })
