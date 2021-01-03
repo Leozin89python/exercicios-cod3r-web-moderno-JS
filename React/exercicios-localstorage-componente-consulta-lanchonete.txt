@@ -1,0 +1,218 @@
+                  === src/components/db ===
+
+const VAREJO = '_VAREJO'
+
+  export default class {
+
+    naTabela = () => {
+        const varejos = localStorage.getItem(VAREJO)
+        return JSON.parse(varejos)
+    }
+
+    salvar = (varejo) =>  {
+          let varejos = localStorage.getItem(VAREJO)
+          if(!varejos){
+            varejos = []
+          }else{
+            varejos = JSON.parse(varejos)
+          }
+
+          varejos.push(varejo)
+          localStorage.setItem(VAREJO, JSON.stringify(varejos))
+    }
+  }
+
+
+
+
+		    === src/components/consulta ===
+
+
+import React , {Component} from 'react'
+import Db from './db'
+
+export default class consulta extends Component{
+        constructor(){
+          super()
+          this.Banco = new Db()
+        }
+
+        state = {
+          varejo : []
+        }
+
+        componentDidMount = () =>{
+          const varejo = this.Banco.naTabela
+          this.setState({
+                varejo
+          })
+          }
+
+          render(){
+              return(
+                  <React.Fragment>
+                        <h2>Pedidos</h2>
+                        <table border="2px">
+                            <thead>
+                                <tr>
+                                    <th>nome</th>
+                                    <th>idade</th>
+                                    <th>pedido</th>
+                                    <th>preço</th>
+                                    <th>quantidade</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              {
+                                this.state.varejo.map(  (e, index)=>{
+                                    return(
+                                         <tr key={index}>
+                                            <th>{e.nome}</th>
+                                            <th>{e.idade}</th>
+                                            <th>{e.pedido}</th>
+                                            <th>{e.preço}</th>
+                                            <th>{e.quantidade}</th>
+                                    </tr>
+                                    )})
+                              }
+                            </tbody>
+                        </table>
+                  </React.Fragment>
+              )      
+          }
+}
+
+
+
+
+
+
+			 	=== src/App ===
+
+import React ,{Component} from 'react'
+
+import DB from '../src/components/db' 
+import Tabela from '../src/components/consulta' 
+
+
+export default class App extends Component{
+    constructor(){
+      super()
+      this.Banco = new DB()
+    }
+    
+    state = {
+      nome : '',
+      idade : 0,
+      pedido : [],
+      preco: 0,
+      quantidade : [],
+      
+    }
+
+    limpar = () =>  {
+    this.setState({
+      nome : '',
+      idade : 0,
+      preco: 0   
+      })
+    }
+
+    enviar = (e) =>  {
+      let valor = e.target.value
+      let name  = e.target.name
+      this.setState({
+        [name] : valor
+      })
+    }
+
+    requisicao = () =>  {
+      let salvar = {
+        nome : this.state.nome,
+        idade : this.state.idade,
+        pedido : this.state.pedido,
+        preco: this.state.preco,
+        quantidade : this.state.quantidade,
+      }
+      this.Banco.salvar(salvar)
+    }
+
+      render(){
+          return(
+              <div>
+              <h2>Bob's&copy;</h2>
+                  <form>
+                      <label>nome: *</label>
+                      <input 
+                        name="nome"
+                        type="text"
+                        placeholder="Gentival Andrade"
+                        value={this.state.nome}
+                        onChange={this.enviar}/>
+                      <br/>
+
+                      <label>idade: *</label>
+                      <input 
+                        name="idade"
+                        type="number"
+                        value={this.state.idade}
+                        onChange={this.enviar}/>
+                      <br/>
+
+                      <label>pedido: *</label>
+                      <select
+                        name="pedido"
+                        value={this.state.pedido}
+                        onChange={this.enviar}>
+                          <option>pizza</option>
+                          <option>hamburguer</option>
+                          <option>misto</option>
+                          <option>torta</option>
+                          <option>cachorro-quente</option>
+                          <option>refrigerante</option>
+                          <option>suco</option>
+                      </select>
+                      <br/>
+                      <br/>
+                            <br/>
+
+                      <label>preço: *</label>
+                      <input 
+                        name="preco"
+                        type="number"
+                        value={this.state.preco}
+                        onChange={this.enviar}/>
+                      <br/>
+                        <br/>
+                          <br/>
+
+                      <label>quantidade: *</label>
+                      <select
+                        name="quantidade"
+                        value={this.state.quantidade}
+                        onChange={this.enviar}>
+                          <option>1</option>
+                          <option>2</option>
+                          <option>3</option>
+                          <option>4</option>
+                          <option>5</option>
+                          <option>6</option>
+                          <option>7</option>
+                          <option>8</option>
+                          <option>9</option>
+                          <option>10</option>
+                      </select>
+                      <br/>
+                      <br/>
+                       <button onClick={this.requisicao}>salvar</button>
+                       <button onClick={this.limpar}>limpar</button>
+                  </form>
+
+                      <br/>
+                      <br/>
+                      <br/>
+                      <Tabela/>
+              </div>
+          )
+      }
+}
