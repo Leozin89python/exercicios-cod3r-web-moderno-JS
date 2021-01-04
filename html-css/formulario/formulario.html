@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>formulary&copy;</title>
+    <link rel="stylesheet" href="formulario.css">
+</head>
+<body>
+    <div class="dpeople">
+        <form action="" class="fpeople">
+            <label id="lb">
+                name: *  
+            </label>
+            <input id="put"  type="text" name="txtName"/>
+
+            <label id="lb">
+               last name: *  
+            </label>
+            <input id="put" type="text" name="txtLastName"/>
+
+            <label id="lb">
+                email: *  
+            </label>
+            <input id="put" type="text" name="txtEmail"/>
+
+            <label id="lb">
+                height: *  
+            </label>
+            <input id="put" type="text" name="txtHeigh"/>
+
+            <label id="lb">
+                sex: *  
+            </label>
+            <input id="put" type="text" name="txtSex"/>
+
+            <button id="btn" name ="button" value="peopleAdd" onclick="callPeople(txtName.value, txtLastName.value, txtEmail.value, txtHeigh.value, txtSex.value)">add person</button>
+        </form>
+        
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+        <br/>
+      
+        <div class="dtPeople">
+            <table id="tdPeople" border="1px">
+                <thead>
+                    <tr>
+                        <td>code</td>
+                        <td>name</td>
+                        <td>last name</td>
+                        <td>email</td>
+                        <td>height</td>
+                        <td>sex</td>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="./formulario.js"></script>
+</body>
+</html>
