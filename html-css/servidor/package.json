@@ -1,0 +1,20 @@
+{
+  "name": "requisicao-xhtml",
+  "version": "1.0.0",
+  "description": "",
+  "main": "servidor.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "json-serve": "^0.1.0",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "servidor.js",
+    "start": "nodemon"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
